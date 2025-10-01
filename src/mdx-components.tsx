@@ -46,6 +46,7 @@ import { DetailedUsageTableDemo } from '@/components/detailed-usage-table-demo';
 import { PricingTableSevenDemo } from '@/components/pricing-table-seven-demo';
 import { PricingTableEightDemo } from '@/components/pricing-table-eight-demo';
 import {PaymentCardDemo} from '@/components/payment-card-demo';
+import PaymentCardTwoDemo from '@/components/payment-card-two-demo';
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -88,6 +89,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     PaymentSuccessDialogDemo,
     PaymentDetailsDemo,
     PaymentCardDemo,
+    PaymentCardTwoDemo,
     ProrationPreviewDemo,
     CouponDemo,
 	  BillingSummaryCardDemo,
