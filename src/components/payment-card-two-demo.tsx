@@ -11,7 +11,9 @@ export default function PaymentCardTwoDemo() {
         itemAmount={146}
         currency="$"
         infoBottom="Make payment to activate subscription"
-        onPay={() => console.log('Pay now clicked')}
+        onPay={async({cardNumber}) => {
+          console.log(`Payment Processed! ${cardNumber}`);
+        }}
         onBack={() => console.log('Back clicked')}
       />
     </div>

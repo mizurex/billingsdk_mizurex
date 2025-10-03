@@ -78,13 +78,15 @@ import { PaymentCardTwo, type PaymentCardTwoProps } from "@/components/billingsd
    <PaymentCardTwo
     title="Complete Payment"
     brandName="Dodo payments"
-   item="Subscription"
+    item="Subscription"
     itemAmount={146}
     currency="$"
     infoBottom="Make payment to activate subscription"
-     onPay={() => console.log('Pay now clicked')}
+     onPay={async({cardNumber})=>{
+      console.log("Card Number:", cardNumber)
+    }}
     onBack={() => console.log('Back clicked')}
-      />
+    />
 ```
 
 ## Props
@@ -97,7 +99,7 @@ import { PaymentCardTwo, type PaymentCardTwoProps } from "@/components/billingsd
 | `itemAmount` | `number` | ✅ | Amount for the item |
 | `currency` | `string` | ❌ | Currency symbol (default: `$`) |
 | `infoBottom` | `string` | ❌ | Helper text under the card input |
-| `onPay` | `() => void` | ❌ | Click handler for Pay now |
+| `onPay` | `() => void` | ❌ | Click handler for Pay now, returns card number |
 | `onBack` | `() => void` | ❌ | Click handler for back button |
 | `className` | `string` | ❌ | Extra classes for root container |
 

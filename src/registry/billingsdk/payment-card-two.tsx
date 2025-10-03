@@ -15,7 +15,7 @@ export interface PaymentCardTwoProps {
   currency?: string;
   brandName?: string;
   onCardNumberChange?: (value: string) => void;
-  onPay?: () => void;
+  onPay?:(data:{cardNumber:string})=>Promise<void> | void;
   onBack?: () => void;
   className?: string;
 }
@@ -58,8 +58,8 @@ export function PaymentCardTwo({
 
         <div className="mt-8 mb-4">
           <div className="relative h-40">
-            <div className="absolute top-6 left-0 right-0 h-32 bg-primary/5 rounded-xl backdrop-blur-sm" />
-            <div className="absolute top-7 left-0 right-0 h-32 bg-primary/7 rounded-xl backdrop-blur-sm" />
+            <div className="absolute top-4 left-0 right-0 h-32 bg-primary/5 rounded-xl backdrop-blur-sm" />
+            <div className="absolute top-6 left-0 right-0 h-32 bg-primary/3 rounded-xl backdrop-blur-sm" />
             <div className="absolute top-8 left-0 right-0 bg-white rounded-xl px-4 py-2 shadow-md">
               <div className="flex justify-between items-start mb-6">
                 <div>
@@ -99,7 +99,7 @@ export function PaymentCardTwo({
       </div>
       <CardContent className="p-2 sm:p-6 space-y-6 pt-4">
         <section className="pt-8 ">
-          <h3 className="text-base font-medium text-foreground mb-4 border-b border-primary/20 pb-0.5">Purchases</h3>
+          <h3 className="text-base font-medium text-foreground mb-4 border-b border-primary/20 pb-0.5"></h3>
           <div className="rounded-lg border border-primary/20 flex justify-between items-center px-4 py-3">
             <div className="flex items-center gap-2">
               <ShoppingBag className="w-4 h-4 text-muted-foreground" />
@@ -116,8 +116,9 @@ export function PaymentCardTwo({
         
         <div className="w-full flex justify-center items-center">
             <Button 
-            onClick={onPay}
-            variant="outline" className="w-full">Pay now <ArrowRight className="w-4 h-4 ml-2" /></Button>
+            variant="default"
+            onClick={()=>onPay?.({cardNumber:inputValue})}
+            className="w-full">Pay now <ArrowRight className="w-4 h-4 ml-2" /></Button>
           </div>
       </CardContent>
     </div>
