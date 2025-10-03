@@ -63,7 +63,7 @@ export function PaymentCardTwo({
             <div className="absolute top-8 left-0 right-0 bg-white rounded-xl px-4 py-2 shadow-md">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <p className="text-xs text-black mb-1">Payble amount:</p>
+                  <p className="text-xs text-black mb-1">Payable amount:</p>
                   <h2 className="text-3xl font-mono text-black border-b border-gray-300">
                     {itemAmount || 320}.<span className="text-sm font-medium ml-0.5 pt-3">00</span>
                     <span className="text-sm font-medium ml-0.5 pt-3">{currency || "$"}</span>
