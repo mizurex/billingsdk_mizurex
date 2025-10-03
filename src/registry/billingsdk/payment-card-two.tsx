@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import {  CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, ArrowRight, CreditCard, Info, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,6 @@ export interface PaymentCardTwoProps {
   item: string;
   currency?: string;
   brandName?: string;
-  onCardNumberChange?: (value: string) => void;
   onPay?:(data:{cardNumber:string})=>Promise<void> | void;
   onBack?: () => void;
   className?: string;
@@ -27,7 +26,6 @@ export function PaymentCardTwo({
   item,
   currency,
   brandName,
-  onCardNumberChange,
   onPay,
   onBack,
   className,
@@ -37,7 +35,6 @@ export function PaymentCardTwo({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 16);
     setInputValue(value);
-    onCardNumberChange?.(value);
   };
 
   const formatCardNumber = (num: string) => {
@@ -45,8 +42,8 @@ export function PaymentCardTwo({
   };
 
   return (
-    <div className={cn("w-full max-w-md overflow-hidden rounded-xl shadow-lg border border-primary/20", className)}>
-      <div className="relative bg-gradient-to-b from-background to-emerald-600/30 px-1 sm:px-3 py-4  shadow-md">
+    <Card className={cn("w-full max-w-md overflow-hidden rounded-xl shadow-lg border border-primary/20 py-0", className)}>
+      <div className="relative bg-gradient-to-b from-background to-primary/20 px-1 sm:px-3 py-4  shadow-md">
         <div className="flex items-center justify-between">
           <button className="text-muted-foreground hover:text-foreground transition-colors border border-primary/20 rounded-md p-2 cursor-pointer" onClick={onBack}>
             <ArrowLeft className="w-4 h-4" />
@@ -58,23 +55,23 @@ export function PaymentCardTwo({
 
         <div className="mt-8 mb-4">
           <div className="relative h-40">
-            <div className="absolute top-4 left-0 right-0 h-32 bg-primary/5 rounded-xl backdrop-blur-sm" />
-            <div className="absolute top-6 left-0 right-0 h-32 bg-primary/3 rounded-xl backdrop-blur-sm" />
-            <div className="absolute top-8 left-0 right-0 bg-white rounded-xl px-4 py-2 shadow-md">
+            <div className="absolute top-[18px] left-0 right-0 h-32 sm:w-94 bg-primary/60  rounded-[2px] backdrop-blur-sm ml-0.5 sm:mx-auto" />
+            <div className="absolute top-6 left-0 right-0 h-32 sm:w-98 bg-primary/100 rounded-[2px] ml-0.5 sm:mx-auto" />
+            <div className="absolute top-8 left-0 right-0 bg-card rounded-[3px] px-4 py-2 shadow-md ">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <p className="text-xs text-black mb-1">Payable amount:</p>
-                  <h2 className="text-3xl font-mono text-black border-b border-gray-300">
+                  <p className="text-xs text-foreground mb-1">Payable amount:</p>
+                  <h2 className="text-3xl font-mono text-foreground border-b border-gray-300">
                     {itemAmount || 320}.<span className="text-sm font-medium ml-0.5 pt-3">00</span>
                     <span className="text-sm font-medium ml-0.5 pt-3">{currency || "$"}</span>
                   </h2>
                 </div>
-                <span className="text-sm font-medium text-black">{brandName || ""}</span>
+                <span className="text-sm font-medium text-foreground">{brandName || ""}</span>
               </div>
 
               <div className="space-y-2">
-          <label className="text-sm font-medium text-black flex items-center gap-2">
-            <CreditCard className="w-4 h-4 text-black" />
+          <label className="text-sm font-medium text-foreground flex items-center gap-2">
+            <CreditCard className="w-4 h-4 text-muted-foreground" />
             Enter Card Number
           </label>
           <div className="relative">
@@ -89,8 +86,8 @@ export function PaymentCardTwo({
           </div>
         </div>
 
-              <p className="text-xs text-black mt-3 flex gap-2 items-center justify-center">
-                <Info className="w-3 h-3 text-black" />
+              <p className="text-[10px] sm:text-xs text-muted-foreground mt-3 flex gap-2 items-center justify-center">
+                <Info className="w-3 h-3 text-muted-foreground" />
                {infoBottom || "Per day can increase the amount"}
               </p>
             </div>
@@ -121,7 +118,7 @@ export function PaymentCardTwo({
             className="w-full">Pay now <ArrowRight className="w-4 h-4 ml-2" /></Button>
           </div>
       </CardContent>
-    </div>
+    </Card>
   );
 }
 
