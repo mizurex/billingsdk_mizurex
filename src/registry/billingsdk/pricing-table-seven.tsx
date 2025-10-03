@@ -32,8 +32,8 @@ export function PricingTableSeven({
       <div className="max-w-6xl mx-auto w-full ">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-foreground mb-2">{title}</h2>
-          <p className="text-muted-foreground text-base mb-8">{description}</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-2">{title}</h2>
+          <p className="text-muted-foreground text-base md:text-lg mb-8">{description}</p>
 
           {/* Toggle Switch */}
           <div className="flex items-center justify-center gap-4 mb-8">
@@ -46,7 +46,7 @@ export function PricingTableSeven({
               aria-label={`Switch to ${isYearly ? 'monthly' : 'yearly'} billing`}
             >
               <motion.span
-                className="inline-block h-4 w-4 transform rounded-full bg-primary shadow-lg"
+                className="inline-block h-4 w-4 transform rounded-full bg-primary shadow-lg cursor-pointer"
                 animate={{ x: isYearly ? 22 : 4 }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
@@ -76,7 +76,7 @@ export function PricingTableSeven({
                     <div className="flex justify-start items-end text-center -left-10 top-4">
                       {plan.monthlyPrice === "Custom" ? (
                         <div className="flex items-baseline justify-center">
-                          <div className="text-4xl font-bold mb-2.5 text-primary">Custom</div>
+                          <div className="text-3xl md:text-4xl font-bold mb-2.5 text-primary">Custom</div>
                             <AnimatePresence mode="wait" initial={false}>
                               <motion.span
                                 key={isYearly ? "per-year" : "per-month"}
